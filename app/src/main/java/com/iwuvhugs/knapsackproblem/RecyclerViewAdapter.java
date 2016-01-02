@@ -2,6 +2,7 @@ package com.iwuvhugs.knapsackproblem;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +23,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.context = context;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private static final String LOGTAG = ViewHolder.class.getSimpleName();
         public TextView textView;
         public ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             textView = (TextView) itemView.findViewById(R.id.recycle_item_text_view);
             imageView = (ImageView) itemView.findViewById(R.id.recycle_image_view);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.d(LOGTAG, String.valueOf(getAdapterPosition()));
         }
     }
 
@@ -46,6 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (dataset != null) {
+
             holder.textView.setText(dataset.getProducts()[position].getTitle());
             Picasso.with(context)
                     .load(dataset.getProducts()[position].getImages()[0].getSrc())
