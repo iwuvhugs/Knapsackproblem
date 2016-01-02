@@ -1,7 +1,4 @@
-package com.iwuvhugs.knapsackproblem;
-
-
-import com.iwuvhugs.knapsackproblem.model.Images;
+package com.iwuvhugs.knapsackproblem.model;
 
 public class Product {
 
@@ -32,8 +29,6 @@ public class Product {
     public void setImages(Images[] images) {
         this.images = images;
     }
-
-
 
 
 }

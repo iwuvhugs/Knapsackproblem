@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 import com.squareup.picasso.Picasso;
 
 

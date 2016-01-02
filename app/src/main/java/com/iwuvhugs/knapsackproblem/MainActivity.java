@@ -7,6 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.iwuvhugs.knapsackproblem.connect.ServiceGenerator;
+import com.iwuvhugs.knapsackproblem.connect.ShopifyClient;
+import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
+
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -18,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private ProductWrapper productList;
 
-    // Views
     private RecyclerView recyclerView;
     private RecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;

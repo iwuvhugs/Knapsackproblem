@@ -1,5 +1,7 @@
-package com.iwuvhugs.knapsackproblem;
+package com.iwuvhugs.knapsackproblem.connect;
 
+
+import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 
 import retrofit.Call;
 import retrofit.http.GET;

@@ -1,4 +1,4 @@
-package com.iwuvhugs.knapsackproblem;
+package com.iwuvhugs.knapsackproblem.connect;
 
 
 import com.squareup.okhttp.OkHttpClient;
