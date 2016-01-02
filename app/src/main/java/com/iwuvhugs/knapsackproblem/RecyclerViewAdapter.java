@@ -1,26 +1,35 @@
 package com.iwuvhugs.knapsackproblem;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private int dataset[];
+    private Context context;
+    private ProductWrapper dataset;
 
-    public RecyclerViewAdapter(int[] array) {
-        dataset = array;
+    public RecyclerViewAdapter(ProductWrapper list, Context context) {
+        dataset = list;
+        this.context = context;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textView;
+        public ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.recycle_item_text_view);
+            imageView = (ImageView) itemView.findViewById(R.id.recycle_image_view);
         }
     }
 
@@ -35,11 +44,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(String.valueOf(dataset[position]));
+        if (dataset != null) {
+            holder.textView.setText(dataset.getProducts()[position].getTitle());
+            Picasso.with(context)
+                    .load(dataset.getProducts()[position].getImages()[0].getSrc())
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder)
+                    .resizeDimen(R.dimen.list_detail_image_size, R.dimen.list_detail_image_size)
+                    .centerInside()
+                    .tag(context)
+                    .into(holder.imageView);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return dataset.length;
+        if (dataset != null) {
+            return dataset.getProducts().length;
+        } else {
+            return 0;
+        }
+    }
+
+    public void setNewDataset(ProductWrapper list) {
+        dataset = list;
+        notifyDataSetChanged();
     }
 }

@@ -1,19 +1,26 @@
 package com.iwuvhugs.knapsackproblem;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private int arrayInt[] = new int[20];
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private ProductWrapper productList;
 
     // Views
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private RecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -21,20 +28,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView =(RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        for (int i = 0; i < arrayInt.length; i++){
-            arrayInt[i] = i;
-            System.out.println(arrayInt[i]);
-        }
-
-        adapter = new RecyclerViewAdapter(arrayInt);
+        // actually set only context here, productList is null
+        adapter = new RecyclerViewAdapter(productList, MainActivity.this);
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        ShopifyClient client = ServiceGenerator.createService(ShopifyClient.class);
+
+        Call<ProductWrapper> call = client.getProducts();
+        call.enqueue(new Callback<ProductWrapper>() {
+            @Override
+            public void onResponse(Response<ProductWrapper> response, Retrofit retrofit) {
+                Log.d(LOG_TAG, "onResponse");
+
+                productList = response.body();
+                adapter.setNewDataset(productList);
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.d(LOG_TAG, t.getLocalizedMessage());
+            }
+        });
+
     }
+
+
 }
