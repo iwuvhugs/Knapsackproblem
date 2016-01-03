@@ -1,8 +1,8 @@
 package com.iwuvhugs.knapsackproblem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private Context context;
+    private static Context context;
     private ProductWrapper dataset;
 
     public RecyclerViewAdapter(ProductWrapper list, Context context) {
@@ -38,7 +38,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View v) {
-            Log.d(LOGTAG, String.valueOf(getAdapterPosition()));
+            Intent resultIntent = new Intent(context, ResultActivity.class);
+            context.startActivity(resultIntent);
         }
     }
 

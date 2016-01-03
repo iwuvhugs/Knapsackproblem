@@ -5,6 +5,7 @@ public class Product {
     private double id;
     private String title;
     private Images[] images;
+    private Variants[] variants;
 
     public double getId() {
         return id;
@@ -28,6 +29,14 @@ public class Product {
 
     public void setImages(Images[] images) {
         this.images = images;
+    }
+
+    public Variants[] getVariants() {
+        return variants;
+    }
+
+    public void setVariants(Variants[] variants) {
+        this.variants = variants;
     }
 
 

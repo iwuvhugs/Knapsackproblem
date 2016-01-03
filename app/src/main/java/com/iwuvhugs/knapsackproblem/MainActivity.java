@@ -1,5 +1,6 @@
 package com.iwuvhugs.knapsackproblem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.iwuvhugs.knapsackproblem.connect.ServiceGenerator;
 import com.iwuvhugs.knapsackproblem.connect.ShopifyClient;
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
@@ -39,10 +41,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
+        floatingActionButton.hide();
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(LOG_TAG, "FAB clicked");
+                if (productList != null) {
+                    Intent resultIntent = new Intent(MainActivity.this, ResultActivity.class);
+                    resultIntent.putExtra(ProductWrapper.class.getSimpleName(), new Gson().toJson(productList));
+                    startActivity(resultIntent);
+                }
             }
         });
 
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response<ProductWrapper> response, Retrofit retrofit) {
                 productList = response.body();
+                floatingActionButton.show();
                 adapter.setNewDataset(productList);
             }
 
