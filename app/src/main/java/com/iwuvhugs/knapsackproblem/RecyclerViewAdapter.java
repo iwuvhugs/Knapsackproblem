@@ -38,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View v) {
-            Intent resultIntent = new Intent(context, ResultActivity.class);
+            Intent resultIntent = new Intent(context, DetailActivity.class);
             context.startActivity(resultIntent);
         }
     }
