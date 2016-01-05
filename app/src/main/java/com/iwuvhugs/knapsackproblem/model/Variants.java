@@ -8,7 +8,6 @@ public class Variants {
     private String price;
     private int grams;
 
-    // calculated parameter
     private double value = 0;
 
     public double getId() {

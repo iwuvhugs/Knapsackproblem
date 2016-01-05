@@ -1,8 +1,6 @@
 package com.iwuvhugs.knapsackproblem.knapsack;
 
 
-import android.util.Log;
-
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 import com.iwuvhugs.knapsackproblem.model.Variants;
 
@@ -30,19 +28,23 @@ public class GreedyKnapsack extends Knapsack {
             if (remainingCapacity - variant.getGrams() > 0) {
                 resultDataset.add(variant);
                 knapsackCost += Double.valueOf(variant.getPrice());
+                knapsackWeight += variant.getGrams();
                 remainingCapacity -= variant.getGrams();
-                Log.d(LOGTAG, "Value: " + variant.getValue() + " \t Price " + variant.getPrice() + " \tWeight " + variant.getGrams());
+//                Log.d(LOGTAG, "Value: " + variant.getValue() + " \t Price " + variant.getPrice() + " \tWeight " + variant.getGrams());
             }
-
         }
-        Log.d(LOGTAG, "Weight of knapsack is " + (100000 - remainingCapacity));
+//        Log.d(LOGTAG, "Weight of knapsack is " + (100000 - remainingCapacity)+ " " + knapsackWeight);
     }
 
     public double getGreedyKnapsackPrice() {
         return knapsackCost;
     }
 
-    public ArrayList<Variants> getGreedyKnapsack(){
+    public int getGreedyKnapsackWeight() {
+        return knapsackWeight;
+    }
+
+    public ArrayList<Variants> getGreedyKnapsack() {
         return resultDataset;
     }
 

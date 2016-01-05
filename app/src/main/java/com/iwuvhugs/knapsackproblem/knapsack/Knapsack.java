@@ -11,6 +11,7 @@ public abstract class Knapsack {
     ArrayList<Variants> dataset = new ArrayList<>();
     ArrayList<Variants> resultDataset = new ArrayList<>();
     double knapsackCost = 0;
+    int knapsackWeight = 0;
 
     public Knapsack(ProductWrapper rawData) {
 

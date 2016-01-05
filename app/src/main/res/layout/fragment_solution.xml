@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.iwuvhugs.knapsackproblem.ResultActivity$PlaceholderFragment">
+
+    <TextView
+        android:id="@+id/weight_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/knapsack_weight"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/secondaryText" />
+
+    <TextView
+        android:id="@+id/cost_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/weight_label"
+        android:layout_marginTop="8dp"
+        android:text="@string/knapsack_cost"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/secondaryText" />
+
+    <TextView
+        android:id="@+id/weight_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/weight_label"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@+id/weight_label"
+        android:text="@string/knapsack_result_text_placeholder"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/primaryText" />
+
+    <TextView
+        android:id="@+id/cost_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cost_label"
+        android:layout_alignStart="@+id/weight_textView"
+        android:layout_alignTop="@+id/cost_label"
+        android:text="@string/knapsack_result_text_placeholder"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/primaryText" />
+
+    <!--<ListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/items_listView"-->
+    <!--android:layout_below="@+id/cost_label"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:layout_alignParentStart="true" />-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/items_recyclersView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</RelativeLayout>
