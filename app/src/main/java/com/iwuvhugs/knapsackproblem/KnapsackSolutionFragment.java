@@ -61,7 +61,7 @@ public class KnapsackSolutionFragment extends Fragment {
             int weight = getArguments().getInt(KNAPSACK_WEIGHT);
             double cost = getArguments().getDouble(KNAPSACK_COST);
             Variants[] variants = new Gson().fromJson(getArguments().getString(KNAPSACK_CONTENT), Variants[].class);
-            Log.d(LOGTAG, "Lenght: " + variants.length);
+//            Log.d(LOGTAG, "Lenght: " + variants.length);
 
             if (weight != 0)
                 weightTextView.setText((weight / 1000.0) + " kg");

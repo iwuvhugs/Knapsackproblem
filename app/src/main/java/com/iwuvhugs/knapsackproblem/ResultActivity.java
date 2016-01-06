@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
+import com.iwuvhugs.knapsackproblem.knapsack.BruteForceKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.GreedyKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
@@ -58,6 +59,10 @@ public class ResultActivity extends AppCompatActivity {
                     greedyKnapsack.getGreedyKnapsack(),
                     greedyKnapsack.getGreedyKnapsackWeight(),
                     greedyKnapsack.getGreedyKnapsackPrice());
+
+
+            BruteForceKnapsack bruteForceKnapsack = new BruteForceKnapsack(productList);
+            bruteForceKnapsack.solve();
 
             solutions[0] = greedySolution;
 
