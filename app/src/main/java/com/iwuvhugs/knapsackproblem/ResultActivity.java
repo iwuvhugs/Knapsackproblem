@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
-import com.iwuvhugs.knapsackproblem.knapsack.BruteForceKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.GeneticKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.GreedyKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
@@ -52,24 +51,46 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         if (productList != null) {
-            GreedyKnapsack greedyKnapsack = new GreedyKnapsack(productList);
-            greedyKnapsack.solve();
-            double cost = greedyKnapsack.getGreedyKnapsackPrice();
-//            Log.i(LOG_TAG, "Cost of knapsack is " + cost);
-            KnapsackSolution greedySolution = new KnapsackSolution(
-                    greedyKnapsack.getGreedyKnapsack(),
-                    greedyKnapsack.getGreedyKnapsackWeight(),
-                    greedyKnapsack.getGreedyKnapsackPrice());
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    GreedyKnapsack greedyKnapsack = new GreedyKnapsack(productList);
+                    greedyKnapsack.solve();
+
+                    KnapsackSolution greedySolution = new KnapsackSolution(
+                            greedyKnapsack.getGreedyKnapsack(),
+                            greedyKnapsack.getGreedyKnapsackWeight(),
+                            greedyKnapsack.getGreedyKnapsackPrice());
+                    solutions[0] = greedySolution;
+                    Log.i(LOG_TAG, "Greedy solution found");
+                    updatePager(0);
+                }
+            }).start();
 
 
             // That is too costly
 //            BruteForceKnapsack bruteForceKnapsack = new BruteForceKnapsack(productList);
 //            bruteForceKnapsack.solve();
 
-            GeneticKnapsack geneticKnapsack = new GeneticKnapsack(productList);
-            geneticKnapsack.solve();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    GeneticKnapsack geneticKnapsack = new GeneticKnapsack(productList);
+                    geneticKnapsack.solve();
 
-            solutions[0] = greedySolution;
+                    KnapsackSolution geneticSolution = new KnapsackSolution(
+                            geneticKnapsack.getGeneticKnapsack(),
+                            geneticKnapsack.getGeneticKnapsackWeight(),
+                            geneticKnapsack.getGeneticKnapsackPrice());
+
+                    solutions[1] = geneticSolution;
+                    Log.i(LOG_TAG, "Genetic solution found");
+                    updatePager(1);
+
+
+                }
+            }).start();
+
 
         }
 
@@ -92,6 +113,17 @@ public class ResultActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+    }
+
+    private void updatePager(final int page) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mSectionsPagerAdapter != null) {
+                    mSectionsPagerAdapter.setSolutions(solutions, page);
+                }
+            }
+        });
     }
 
     @Override

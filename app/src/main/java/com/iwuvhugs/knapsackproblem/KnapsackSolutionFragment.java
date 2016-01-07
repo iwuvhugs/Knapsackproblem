@@ -2,10 +2,8 @@ package com.iwuvhugs.knapsackproblem;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
 import com.iwuvhugs.knapsackproblem.model.Variants;
-
-import java.util.Arrays;
 
 
 public class KnapsackSolutionFragment extends Fragment {
@@ -31,11 +27,13 @@ public class KnapsackSolutionFragment extends Fragment {
 
     public static KnapsackSolutionFragment newInstance(KnapsackSolution solution) {
         KnapsackSolutionFragment fragment = new KnapsackSolutionFragment();
-        Bundle args = new Bundle();
-        args.putString(KNAPSACK_CONTENT, new Gson().toJson(solution.getContents()));
-        args.putInt(KNAPSACK_WEIGHT, solution.getContentWeight());
-        args.putDouble(KNAPSACK_COST, solution.getContentCost());
-        fragment.setArguments(args);
+        if (solution != null) {
+            Bundle args = new Bundle();
+            args.putString(KNAPSACK_CONTENT, new Gson().toJson(solution.getContents()));
+            args.putInt(KNAPSACK_WEIGHT, solution.getContentWeight());
+            args.putDouble(KNAPSACK_COST, solution.getContentCost());
+            fragment.setArguments(args);
+        }
         return fragment;
     }
 

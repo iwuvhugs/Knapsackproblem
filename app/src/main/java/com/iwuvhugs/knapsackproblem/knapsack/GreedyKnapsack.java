@@ -1,8 +1,6 @@
 package com.iwuvhugs.knapsackproblem.knapsack;
 
 
-import android.util.Log;
-
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 import com.iwuvhugs.knapsackproblem.model.Variants;
 

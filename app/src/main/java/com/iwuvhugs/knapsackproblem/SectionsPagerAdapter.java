@@ -3,12 +3,15 @@ package com.iwuvhugs.knapsackproblem;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
 
 
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
+    private static final String LOGTAG = SectionsPagerAdapter.class.getSimpleName();
     private KnapsackSolution[] solutions;
 
     public SectionsPagerAdapter(FragmentManager fm, KnapsackSolution[] solutions) {
@@ -21,17 +24,18 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if(solutions[position]!= null){
+        Log.e(LOGTAG, "getItem");
+//        if(solutions[position]!= null){
             return KnapsackSolutionFragment.newInstance(solutions[position]);
-        } else {
-            return KnapsackSolutionFragment.newInstance();
-        }
+//        } else {
+//            return KnapsackSolutionFragment.newInstance();
+//        }
 
     }
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
+        // Show 2 total pages.
         return solutions.length;
     }
 
@@ -42,10 +46,23 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "Greedy";
             case 1:
                 return "Genetic";
-//            case 2:
-//                return "Genetic";
+
         }
         return null;
+    }
+
+    public void setSolutions(KnapsackSolution[] solutions, int page) {
+        Log.i(LOGTAG, "setSolutions");
+        if(SectionsPagerAdapter.this != null) {
+            this.solutions = solutions;
+            notifyDataSetChanged();
+        }
+
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return SectionsPagerAdapter.POSITION_NONE;
     }
 }
 
