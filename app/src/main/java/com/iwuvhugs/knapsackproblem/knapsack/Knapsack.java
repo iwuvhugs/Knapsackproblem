@@ -17,8 +17,8 @@ public abstract class Knapsack {
 
     public Knapsack(ProductWrapper rawData) {
 
-        double totalPrice = 0;
-        int totalWeight = 0;
+//        double totalPrice = 0;
+//        int totalWeight = 0;
 
         for (int i = 0; i < rawData.getProducts().length; i++) {
             for (int j = 0; j < rawData.getProducts()[i].getVariants().length; j++) {
@@ -30,13 +30,13 @@ public abstract class Knapsack {
                 v.setValue(Double.valueOf(rawData.getProducts()[i].getVariants()[j].getPrice()) / ((double) rawData.getProducts()[i].getVariants()[j].getGrams()));
                 dataset.add(v);
 
-                totalPrice += Double.valueOf(rawData.getProducts()[i].getVariants()[j].getPrice());
-                totalWeight += rawData.getProducts()[i].getVariants()[j].getGrams();
+//                totalPrice += Double.valueOf(rawData.getProducts()[i].getVariants()[j].getPrice());
+//                totalWeight += rawData.getProducts()[i].getVariants()[j].getGrams();
             }
         }
 
-        Log.d("Knapsack", "total price " + totalPrice);
-        Log.d("Knapsack", "total weight " + totalWeight);
+//        Log.d("Knapsack", "total price " + totalPrice);
+//        Log.d("Knapsack", "total weight " + totalWeight);
 
     }
 

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.google.gson.Gson;
 import com.iwuvhugs.knapsackproblem.knapsack.BruteForceKnapsack;
+import com.iwuvhugs.knapsackproblem.knapsack.GeneticKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.GreedyKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
@@ -20,7 +21,7 @@ public class ResultActivity extends AppCompatActivity {
     private static final String LOG_TAG = ResultActivity.class.getSimpleName();
 
     private ProductWrapper productList;
-    private KnapsackSolution[] solutions = new KnapsackSolution[3];
+    private KnapsackSolution[] solutions = new KnapsackSolution[2];
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -61,8 +62,12 @@ public class ResultActivity extends AppCompatActivity {
                     greedyKnapsack.getGreedyKnapsackPrice());
 
 
-            BruteForceKnapsack bruteForceKnapsack = new BruteForceKnapsack(productList);
-            bruteForceKnapsack.solve();
+            // That is too costly
+//            BruteForceKnapsack bruteForceKnapsack = new BruteForceKnapsack(productList);
+//            bruteForceKnapsack.solve();
+
+            GeneticKnapsack geneticKnapsack = new GeneticKnapsack(productList);
+            geneticKnapsack.solve();
 
             solutions[0] = greedySolution;
 

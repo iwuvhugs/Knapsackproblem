@@ -41,9 +41,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "Greedy";
             case 1:
-                return "Brute-Force";
-            case 2:
                 return "Genetic";
+//            case 2:
+//                return "Genetic";
         }
         return null;
     }
