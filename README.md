@@ -7,4 +7,5 @@ Things to be used:
 * Retrofit + Picasso
 * [Shopicruit API](http://shopicruit.myshopify.com/products.json) by Shopify
 * Greedy Algorithm
+* Genetic Algorithm ([example](http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3)) 
 * something else
