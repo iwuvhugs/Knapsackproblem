@@ -1,7 +1,5 @@
 package com.iwuvhugs.knapsackproblem.knapsack;
 
-import android.util.Log;
-
 import com.iwuvhugs.knapsackproblem.knapsack.GeneticAlgorithm.FitnessCalculator;
 import com.iwuvhugs.knapsackproblem.knapsack.GeneticAlgorithm.GeneticAlgorithm;
 import com.iwuvhugs.knapsackproblem.knapsack.GeneticAlgorithm.KnapsackSet;
@@ -29,18 +27,14 @@ public class GeneticKnapsack extends Knapsack {
         // Create fist population of 50 random sets
         Population population = new Population(100, true);
 
-//        Log.d(LOGTAG, "Fittest " + population.getFittest().getFitness());
-//        Log.d(LOGTAG, ""+population.getFittest());
         population = GeneticAlgorithm.evolvePopulation(population);
-        for (int i = 0; i < 250; i++) {
+        for (int i = 0; i < 300; i++) {
             population = GeneticAlgorithm.evolvePopulation(population);
         }
+
         // Print final results
 //        Log.d(LOGTAG, "Finished");
 //        Log.d(LOGTAG, "Final cost: " + population.getFittest().getFitness());
-//        Log.d(LOGTAG, "Solution:");
-//        Log.d(LOGTAG, "" + population.getFittest());
-//        System.out.println(FitnessCalculator.getMaxCost());
 
         knapsackCost = FitnessCalculator.getMaxCost();
         knapsackWeight = FitnessCalculator.getMaxWeight();

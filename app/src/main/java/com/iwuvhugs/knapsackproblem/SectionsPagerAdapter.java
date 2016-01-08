@@ -2,9 +2,7 @@ package com.iwuvhugs.knapsackproblem;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
 
@@ -24,13 +22,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.e(LOGTAG, "getItem");
-//        if(solutions[position]!= null){
-            return KnapsackSolutionFragment.newInstance(solutions[position]);
-//        } else {
-//            return KnapsackSolutionFragment.newInstance();
-//        }
-
+        return KnapsackSolutionFragment.newInstance(solutions[position]);
     }
 
     @Override
@@ -51,11 +43,12 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         return null;
     }
 
-    public void setSolutions(KnapsackSolution[] solutions, int page) {
-        Log.i(LOGTAG, "setSolutions");
-        if(SectionsPagerAdapter.this != null) {
+    public void setSolutions(KnapsackSolution[] solutions) {
+        try {
             this.solutions = solutions;
             notifyDataSetChanged();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
         }
 
     }

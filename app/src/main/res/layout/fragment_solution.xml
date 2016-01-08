@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -53,18 +52,39 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/primaryText" />
 
-    <!--<ListView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/items_listView"-->
-    <!--android:layout_below="@+id/cost_label"-->
-    <!--android:layout_marginTop="8dp"-->
-    <!--android:layout_alignParentStart="true" />-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/items_recyclersView"
+    <LinearLayout
+        android:id="@+id/algoritm_progressView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_below="@+id/cost_label"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp" />
+
+        <TextView
+            android:id="@+id/algoritm_progress_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondaryText"
+            android:textSize="12sp"
+            android:text="@string/progress_text"/>
+
+    </LinearLayout>
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/items_recyclersView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/cost_label"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
 </RelativeLayout>

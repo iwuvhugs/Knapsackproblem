@@ -63,7 +63,8 @@ public class ResultActivity extends AppCompatActivity {
                             greedyKnapsack.getGreedyKnapsackPrice());
                     solutions[0] = greedySolution;
                     Log.i(LOG_TAG, "Greedy solution found");
-                    updatePager(0);
+                    updatePager();
+
                 }
             }).start();
 
@@ -85,8 +86,7 @@ public class ResultActivity extends AppCompatActivity {
 
                     solutions[1] = geneticSolution;
                     Log.i(LOG_TAG, "Genetic solution found");
-                    updatePager(1);
-
+                    updatePager();
 
                 }
             }).start();
@@ -115,12 +115,12 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
-    private void updatePager(final int page) {
+    private void updatePager() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mSectionsPagerAdapter != null) {
-                    mSectionsPagerAdapter.setSolutions(solutions, page);
+                    mSectionsPagerAdapter.setSolutions(solutions);
                 }
             }
         });
@@ -128,13 +128,11 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

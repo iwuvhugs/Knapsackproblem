@@ -6,4 +6,5 @@
     <string name="knapsack_cost">Knapsack cost:</string>
     <string name="knapsack_weight">Knapsack weight:</string>
     <string name="knapsack_result_text_placeholder">----</string>
+    <string name="progress_text">Algorithm is performing calculations</string>
 </resources>

@@ -4,6 +4,7 @@ public class Product {
 
     private double id;
     private String title;
+    private String body_html;
     private Images[] images;
     private Variants[] variants;
 
@@ -21,6 +22,14 @@ public class Product {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBody_html() {
+        return body_html;
+    }
+
+    public void setBody_html(String body_html) {
+        this.body_html = body_html;
     }
 
     public Images[] getImages() {

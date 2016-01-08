@@ -3,12 +3,15 @@ package com.iwuvhugs.knapsackproblem;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.iwuvhugs.knapsackproblem.model.Product;
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 import com.squareup.picasso.Picasso;
 
@@ -16,7 +19,7 @@ import com.squareup.picasso.Picasso;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static Context context;
-    private ProductWrapper dataset;
+    private static ProductWrapper dataset;
 
     public RecyclerViewAdapter(ProductWrapper list, Context context) {
         dataset = list;
@@ -39,6 +42,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public void onClick(View v) {
             Intent resultIntent = new Intent(context, DetailActivity.class);
+            Log.d(LOGTAG, getAdapterPosition() + " " +  dataset.getProducts()[getAdapterPosition()].getTitle());
+            resultIntent.putExtra(Product.class.getSimpleName(), new Gson().toJson(dataset.getProducts()[getAdapterPosition()]));
             context.startActivity(resultIntent);
         }
     }
@@ -81,4 +86,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         dataset = list;
         notifyDataSetChanged();
     }
+
 }

@@ -1,9 +1,6 @@
 package com.iwuvhugs.knapsackproblem.knapsack.GeneticAlgorithm;
 
 
-import android.util.Log;
-
-import com.iwuvhugs.knapsackproblem.knapsack.Knapsack;
 import com.iwuvhugs.knapsackproblem.model.Variants;
 
 import java.util.ArrayList;

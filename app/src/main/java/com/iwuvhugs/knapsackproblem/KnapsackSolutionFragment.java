@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -37,9 +38,6 @@ public class KnapsackSolutionFragment extends Fragment {
         return fragment;
     }
 
-    public static Fragment newInstance() {
-        return new KnapsackSolutionFragment();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,11 +46,13 @@ public class KnapsackSolutionFragment extends Fragment {
         TextView weightTextView = (TextView) rootView.findViewById(R.id.weight_textView);
         TextView costTextView = (TextView) rootView.findViewById(R.id.cost_textView);
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.items_recyclersView);
-        recyclerView.setHasFixedSize(true);
-        ;
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(container.getContext());
-        recyclerView.setLayoutManager(layoutManager);
+        LinearLayout progressView = (LinearLayout) rootView.findViewById(R.id.algoritm_progressView);
+
+//        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.items_recyclersView);
+//        recyclerView.setHasFixedSize(true);
+//
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(container.getContext());
+//        recyclerView.setLayoutManager(layoutManager);
 
 
         if (getArguments() != null) {
@@ -65,6 +65,8 @@ public class KnapsackSolutionFragment extends Fragment {
                 weightTextView.setText((weight / 1000.0) + " kg");
             if (cost != 0)
                 costTextView.setText("$ " + cost);
+
+            progressView.setVisibility(View.GONE);
 
 //            ItemsRecyclerViewAdapter adapter = new ItemsRecyclerViewAdapter(variants);
 //            recyclerView.setAdapter(adapter);
