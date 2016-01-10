@@ -1,13 +1,19 @@
 package com.iwuvhugs.knapsackproblem;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -26,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private ProductWrapper productList;
 
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbar;
     private RecyclerView recyclerView;
     private RecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -36,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
+        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
+        collapsingToolbar.setTitle(getResources().getString(R.string.app_name));
+        collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(MainActivity.this, android.R.color.white));
+        collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(MainActivity.this, android.R.color.transparent));
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -79,12 +95,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_result, menu);
-//        return true;
-//    }
-//
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.send_email:
+                Log.d(LOG_TAG, "send email to me");
+                sendMeEmail();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void sendMeEmail() {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, "k.suslov@yahoo.com");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Developer Intern response");
+        intent.putExtra(Intent.EXTRA_TEXT, "Hi Kirill! ...");
+        startActivity(Intent.createChooser(intent, "Pick an Email provider"));
+
+    }
 }

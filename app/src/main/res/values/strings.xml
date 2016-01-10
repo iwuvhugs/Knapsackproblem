@@ -1,10 +1,27 @@
 <resources>
-    <string name="app_name">Knapsack problem</string>
+    <string name="app_name">Shopicruit</string>
     <string name="title_activity_result">Knapsack Solution</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="send_email">Send me email</string>
+
     <string name="knapsack_cost">Knapsack cost:</string>
     <string name="knapsack_weight">Knapsack weight:</string>
     <string name="knapsack_result_text_placeholder">----</string>
     <string name="progress_text">Algorithm is performing calculations</string>
+
+    <string name="cool_ctory">Hi! My name is Kirill.
+        \nI\'m an IT student at Lambton College.
+        \n\nThis is my solution for Developer Intern test task.
+        I solve it in 2 ways.
+        \nFirst is Greedy Algorithm that is quite fast and
+        result satisfies the conditions.
+        \nSecond is Genetic Algorithm
+        that can be limited in time manually
+        (that is why it calculates pretty long time) but
+        it is also less dependent on raw data than Greedy one.
+        \nI don\'t solve the task with Brute Force and Branch and Bound Algorithms
+        because they are not efficient for big initial raw data.
+        And I skip Dynamic Algorithm because I don\'t know how it works yet :)
+        \n\nThanks for that task! I had a great time solving in during New Year break.
+
+    </string>
 </resources>

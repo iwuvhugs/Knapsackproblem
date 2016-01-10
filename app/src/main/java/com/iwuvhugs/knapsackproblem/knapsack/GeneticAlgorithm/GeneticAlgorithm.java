@@ -5,7 +5,7 @@ public class GeneticAlgorithm {
 
     // parameters
     private static final double uniformRate = 0.5;
-    private static final double mutationRate = 0.015;
+    private static final double mutationRate = 0.025;
     private static final int tournametSize = 5;
     private static final boolean elitism = true;
 
