@@ -4,7 +4,7 @@ package com.iwuvhugs.knapsackproblem.knapsack.GeneticAlgorithm;
 public class KnapsackSet {
 
     static int defaultLength = 110;
-    private static double geneChance = 1.8;
+    private static double geneChance = 2.8;
     private byte[] genes = new byte[defaultLength];
     private double fitness = 0;
 

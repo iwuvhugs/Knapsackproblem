@@ -38,6 +38,9 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
                 return "Greedy";
             case 1:
                 return "Genetic";
+            case 2:
+                return "Harmonic";
+
 
         }
         return null;

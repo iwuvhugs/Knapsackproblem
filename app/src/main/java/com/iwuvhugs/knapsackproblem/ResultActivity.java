@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.google.gson.Gson;
 import com.iwuvhugs.knapsackproblem.knapsack.GeneticKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.GreedyKnapsack;
+import com.iwuvhugs.knapsackproblem.knapsack.HarmonicKnapsack;
 import com.iwuvhugs.knapsackproblem.knapsack.KnapsackSolution;
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 
@@ -20,7 +21,7 @@ public class ResultActivity extends AppCompatActivity {
     private static final String LOG_TAG = ResultActivity.class.getSimpleName();
 
     private ProductWrapper productList;
-    private KnapsackSolution[] solutions = new KnapsackSolution[2];
+    private KnapsackSolution[] solutions = new KnapsackSolution[3];
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -62,7 +63,7 @@ public class ResultActivity extends AppCompatActivity {
                             greedyKnapsack.getGreedyKnapsackWeight(),
                             greedyKnapsack.getGreedyKnapsackPrice());
                     solutions[0] = greedySolution;
-                    Log.i(LOG_TAG, "Greedy solution found");
+//                    Log.i(LOG_TAG, "Greedy solution found");
                     updatePager();
 
                 }
@@ -85,12 +86,30 @@ public class ResultActivity extends AppCompatActivity {
                             geneticKnapsack.getGeneticKnapsackPrice());
 
                     solutions[1] = geneticSolution;
-                    Log.i(LOG_TAG, "Genetic solution found");
+//                    Log.i(LOG_TAG, "Genetic solution found");
                     updatePager();
 
                 }
             }).start();
 
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    HarmonicKnapsack harmonicKnapsack = new HarmonicKnapsack(productList);
+                    harmonicKnapsack.solve();
+
+                    KnapsackSolution harmonicSolution = new KnapsackSolution(
+                            harmonicKnapsack.getHarmonicKnapsack(),
+                            harmonicKnapsack.getHarmonicKnapsackWeight(),
+                            harmonicKnapsack.getHarmonicKnapsackPrice());
+
+                    solutions[2] = harmonicSolution;
+                    Log.i(LOG_TAG, "Harmonic solution found");
+                    updatePager();
+
+                }
+            }).start();
 
         }
 

@@ -11,17 +11,14 @@
     <string name="cool_ctory">Hi! My name is Kirill.
         \nI\'m an IT student at Lambton College.
         \n\nThis is my solution for Developer Intern test task.
-        I solve it in 2 ways.
-        \nFirst is Greedy Algorithm that is quite fast and
+        I solve it in 3 ways.
+        \n1) Greedy Algorithm. Fast and
         result satisfies the conditions.
-        \nSecond is Genetic Algorithm
-        that can be limited in time manually
+        \n2) Genetic Algorithm. Can be limited in time manually
         (that is why it calculates pretty long time) but
-        it is also less dependent on raw data than Greedy one.
-        \nI don\'t solve the task with Brute Force and Branch and Bound Algorithms
-        because they are not efficient for big initial raw data.
-        And I skip Dynamic Algorithm because I don\'t know how it works yet :)
-        \n\nThanks for that task! I had a great time solving in during New Year break.
-
+        it\'s less dependent on input data than Greedy one, pretty accurate.
+        \n3) Harmonic Algorithm. Faster than Genetic one, but way more dependent on
+        input data. Doesn\'t realy work with these diverse items.
+        \n\nThanks for that task! I had a great time solving it during New Year break.
     </string>
 </resources>
