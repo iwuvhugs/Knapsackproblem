@@ -1,20 +1,25 @@
 package com.iwuvhugs.knapsackproblem.knapsack.HarmonyAlgorithm;
 
 
+import java.util.Random;
+
 public class Song {
 
     static int defaultLength = 110;
     private byte[] notes = new byte[defaultLength];
-    private static double dj = 2.8;
+    //    private static double dj = 2.8;
+    private static int dj = 22;
     private double awesomeness = 0;
 
     // create a byte array that represent Knapsack where 1 - item is taken, 0 - not
     public void generateSong() {
+        Random random = new Random();
         for (int i = 0; i < size(); i++) {
 
             // 9/5 chance of 0 and 1
-            long chance = Math.round(Math.random() * dj);
-            if (chance < 1) {
+//            long chance = Math.round(Math.random() * dj);
+            int chance = random.nextInt(100);
+            if (chance < dj) {
                 notes[i] = 1;
             } else {
                 notes[i] = 0;
@@ -37,15 +42,14 @@ public class Song {
 
     public void setNote(int position, byte gene) {
         notes[position] = gene;
-
         awesomeness = 0;
     }
 
-    public double getAwesomness(){
-        if(awesomeness == 0){
+    public double getAwesomness() {
+        if (awesomeness == 0) {
             awesomeness = AwesomenessCalculator.getAwesomness(this);
         }
-        return  awesomeness;
+        return awesomeness;
     }
 
     public int size() {

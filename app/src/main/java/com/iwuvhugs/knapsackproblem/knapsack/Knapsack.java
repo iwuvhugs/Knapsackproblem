@@ -1,7 +1,5 @@
 package com.iwuvhugs.knapsackproblem.knapsack;
 
-import android.util.Log;
-
 import com.iwuvhugs.knapsackproblem.model.ProductWrapper;
 import com.iwuvhugs.knapsackproblem.model.Variants;
 
@@ -17,31 +15,20 @@ public abstract class Knapsack {
 
     public Knapsack(ProductWrapper rawData) {
 
-//        double totalPrice = 0;
-//        int totalWeight = 0;
-
         for (int i = 0; i < rawData.getProducts().length; i++) {
             for (int j = 0; j < rawData.getProducts()[i].getVariants().length; j++) {
-//                if(dataset.size() <= 10) {
-                    Variants v = new Variants();
-                    v.setId(rawData.getProducts()[i].getVariants()[j].getId());
-                    v.setTitle(rawData.getProducts()[i].getVariants()[j].getTitle());
-                    v.setPrice(rawData.getProducts()[i].getVariants()[j].getPrice());
-                    v.setGrams(rawData.getProducts()[i].getVariants()[j].getGrams());
-                    v.setValue(Double.valueOf(rawData.getProducts()[i].getVariants()[j].getPrice()) / ((double) rawData.getProducts()[i].getVariants()[j].getGrams()));
-                    dataset.add(v);
-//                }
-
-//                totalPrice += Double.valueOf(rawData.getProducts()[i].getVariants()[j].getPrice());
-//                totalWeight += rawData.getProducts()[i].getVariants()[j].getGrams();
+                Variants v = new Variants();
+                v.setId(rawData.getProducts()[i].getVariants()[j].getId());
+                v.setTitle(rawData.getProducts()[i].getVariants()[j].getTitle());
+                v.setPrice(rawData.getProducts()[i].getVariants()[j].getPrice());
+                v.setGrams(rawData.getProducts()[i].getVariants()[j].getGrams());
+                v.setValue(Double.valueOf(rawData.getProducts()[i].getVariants()[j].getPrice()) / ((double) rawData.getProducts()[i].getVariants()[j].getGrams()));
+                dataset.add(v);
             }
         }
-
-//        Log.d("Knapsack", "total price " + totalPrice);
-//        Log.d("Knapsack", "total weight " + totalWeight);
-
     }
 
-    public void solve(){}
+    public void solve() {
+    }
 
 }

@@ -1,11 +1,15 @@
 package com.iwuvhugs.knapsackproblem.knapsack.GeneticAlgorithm;
 
 
+import java.util.Random;
+
 public class GeneticAlgorithm {
 
     // parameters
-    private static final double uniformRate = 0.5;
-    private static final double mutationRate = 0.025;
+//    private static final double uniformRate = 0.5;
+    private static final int uniformRate = 5;
+    //    private static final double mutationRate = 0.025;
+    private static final int mutationRate = 25;
     private static final int tournametSize = 5;
     private static final boolean elitism = true;
 
@@ -36,10 +40,11 @@ public class GeneticAlgorithm {
 
     private static KnapsackSet crossover(KnapsackSet individOne, KnapsackSet individTwo) {
         KnapsackSet newSet = new KnapsackSet();
-
+        Random random = new Random();
         // Random genes from both parents
         for (int i = 0; i < individOne.size(); i++) {
-            if (Math.random() <= uniformRate) {
+//            if (Math.random() <= uniformRate) {
+            if (random.nextInt(10) <= uniformRate) {
                 newSet.setGene(i, individOne.getGene(i));
             } else {
                 newSet.setGene(i, individTwo.getGene(i));
@@ -78,9 +83,17 @@ public class GeneticAlgorithm {
 
 
     private static void mutate(KnapsackSet set) {
+        Random random = new Random();
         for (int i = 0; i < set.size(); i++) {
-            if (Math.random() <= mutationRate) {
-                byte gene = (byte) Math.round(Math.random());
+//            if (Math.random() <= mutationRate) {
+            if (random.nextInt(1000) <= mutationRate) {
+//                byte gene = (byte) Math.round(Math.random());
+                byte gene;
+                if (random.nextBoolean()) {
+                    gene = 0;
+                } else {
+                    gene = 1;
+                }
                 set.setGene(i, gene);
             }
         }
@@ -88,9 +101,10 @@ public class GeneticAlgorithm {
 
     private static KnapsackSet tournamentSelection(Population pop) {
         Population tournament = new Population(tournametSize, false);
-
+        Random random = new Random();
         for (int i = 0; i < tournametSize; i++) {
-            int randomId = (int) (Math.random() * pop.size());
+//            int randomId = (int) (Math.random() * pop.size());
+            int randomId = random.nextInt(pop.size());
             tournament.saveKnapsackSet(i, pop.getKnapsackSet(randomId));
         }
 

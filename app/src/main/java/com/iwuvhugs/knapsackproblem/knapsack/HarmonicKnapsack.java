@@ -27,14 +27,14 @@ public class HarmonicKnapsack extends Knapsack {
         AwesomenessCalculator.setDataset(dataset);
 
         // Create fist population of 75 random sets
-        Playlist playlist = new Playlist(100);
+        Playlist playlist = new Playlist(2500);
 
         // Print final results
         Log.e(LOGTAG, "Initial");
         Log.e(LOGTAG, "Initial cost: " + playlist.getTheMostAwesomeSong().getAwesomness());
 
         HarmonyAlgorithm.improvise(playlist);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             HarmonyAlgorithm.improvise(playlist);
         }
 

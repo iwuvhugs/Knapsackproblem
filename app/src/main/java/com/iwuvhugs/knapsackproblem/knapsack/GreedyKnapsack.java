@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/*
-    It's not the most accurate way but the easiest one
- */
-
 public class GreedyKnapsack extends Knapsack {
 
     private static final String LOGTAG = GreedyKnapsack.class.getSimpleName();

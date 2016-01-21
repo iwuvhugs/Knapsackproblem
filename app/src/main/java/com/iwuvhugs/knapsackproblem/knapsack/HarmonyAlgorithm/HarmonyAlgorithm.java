@@ -1,9 +1,12 @@
 package com.iwuvhugs.knapsackproblem.knapsack.HarmonyAlgorithm;
 
 
+import java.util.Random;
+
 public class HarmonyAlgorithm {
 
-    private static final double talent = 0.9;
+    //    private static final double talent = 0.9;
+    private static final double talent = 85;
 
     private static final String LOGTAG = HarmonyAlgorithm.class.getSimpleName();
 
@@ -35,10 +38,16 @@ public class HarmonyAlgorithm {
     }
 
     private static void dropTheBass(Song song) {
-        double randomNumber = Math.random();
-        int position = (int) (randomNumber * song.size());
-        if (Math.random() <= talent) {
-            byte note = (byte) Math.round(Math.random());
+//        double randomNumber = Math.random();
+        Random random = new Random();
+        int position = random.nextInt(song.size());
+        if (random.nextInt(100) <= talent) {
+            byte note;
+            if (random.nextBoolean()) {
+                note = 0;
+            } else {
+                note = 1;
+            }
             song.setNote(position, note);
         }
     }

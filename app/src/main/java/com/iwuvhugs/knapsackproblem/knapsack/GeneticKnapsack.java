@@ -24,7 +24,7 @@ public class GeneticKnapsack extends Knapsack {
         KnapsackSet.setDefaultGeneLength(dataset.size());
         FitnessCalculator.setDataset(dataset);
 
-        // Create fist population of 75 random sets
+        // Create fist population of 50 random sets
         Population population = new Population(50, true);
 
 //        Log.d(LOGTAG, "Initial");
